@@ -1,0 +1,28 @@
+.Header {
+    background-color: lightblue;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 10vh;
+    text-align: center;
+    color: white;
+}
+
+.Header p {
+    text-transform: uppercase;
+    font-size: 23px;
+    letter-spacing: 5px;
+    float: left;
+    margin-left: 20px;
+}
+
+.Header span {
+    float: right;
+    margin: 10px;
+}
+
+.Header a {
+    float: right;
+    margin: 10px 20px;
+    color: white;
+}

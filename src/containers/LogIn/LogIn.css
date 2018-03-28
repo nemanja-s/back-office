@@ -1,0 +1,28 @@
+.LogIn {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.LogIn input {
+    display: block;
+    margin: 5px auto 15px auto;
+    border: 1px solid darkgrey;
+    padding: 10px;
+}
+
+.LogIn button {
+    display: block;
+    margin: 10px auto;
+    width: 169px;
+}
+
+.LogIn a {
+    color: darkgrey;
+}
+
+.Buttons {
+    margin-top: 35px;
+}
