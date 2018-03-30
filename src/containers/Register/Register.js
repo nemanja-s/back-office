@@ -30,11 +30,11 @@ class Register extends Component {
         .then(response => {
           console.log(response);
           this.setState({
-            message: 'Your account successfuly created...'
+            message: 'You can login now...'
           });
           setTimeout(() => {
             this.setState({ redirect: true })
-          }, 2000)
+          }, 1500)
         })
         .catch(error => {console.log(error)});
     } else {

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-import Header from './components/Header/Header';
+import Header from './containers/Header/Header';
 import LogIn from './containers/LogIn/LogIn';
 import Register from './containers/Register/Register';
 import Users from './components/Users/Users';
-import Footer from './components/Footer/Footer';
+import Footer from './containers/Footer/Footer';
 
 
 class App extends Component {
