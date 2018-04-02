@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import './Register.css';
 import Trumail from '../../components/Trumail/Trumail';
@@ -9,18 +10,17 @@ import Password from '../../components/Password/Password';
 
 class Register extends Component {
   state = {
-    message: null,
-    redirect: false
+    message: null
   };
 
   createAccount = () => {
-    if (this.state.email && this.state.username && this.state.password) {
+    if (this.props.email && this.props.username && this.props.password) {
       this.setState({ message: null });
       const url = 'https://back-office-ba934.firebaseio.com/users.json';
       let user = JSON.stringify({
-        email: this.state.email,
-        username: this.state.username,
-        password: this.state.password
+        email: this.props.email,
+        username: this.props.username,
+        password: this.props.password
       });
       let fetchData = {
         method: 'POST',
@@ -33,8 +33,8 @@ class Register extends Component {
             message: 'You can login now...'
           });
           setTimeout(() => {
-            this.setState({ redirect: true })
-          }, 1500)
+            this.props.history.push(`${process.env.PUBLIC_URL}/`)
+          }, 1000)
         })
         .catch(error => {console.log(error)});
     } else {
@@ -42,27 +42,12 @@ class Register extends Component {
     }
   };
 
-  emailHandler = email => {
-    this.setState({ email: email })
-  };
-
-  passwordHandler = password => {
-    this.setState({ password: password })
-  };
-
-  usernameHandler = username => {
-    this.setState({ username: username })
-  };
-
   render () {
-    if (this.state.redirect) {
-      return <Redirect to={`${process.env.PUBLIC_URL}/`} />
-    }
     return (
       <div className='Register'>
-        <Trumail getEmail={this.emailHandler} />
-        <Username getUsername={this.usernameHandler} />
-        <Password getPassword={this.passwordHandler} />
+        <Trumail />
+        <Username />
+        <Password />
         <div className='Buttons'>
           {this.state.message}
           <button onClick={this.createAccount}>REGISTER</button>
@@ -73,4 +58,12 @@ class Register extends Component {
   }
 }
 
-export default Register;
+const mapStateToProps = state => {
+  return {
+    email: state.registerEmail,
+    username: state.registerUsername,
+    password: state.registerPassword
+  }
+};
+
+export default connect(mapStateToProps)(Register);

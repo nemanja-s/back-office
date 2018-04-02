@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actionTypes from '../../store/actions';
 
 class Password extends Component {
   state = {
@@ -11,7 +13,7 @@ class Password extends Component {
       return
     }
     this.setState({ message: 'OK!' });
-    this.props.getPassword(event.target.value)
+    this.props.registerPassword(event.target.value)
   };
 
   render () {
@@ -27,4 +29,10 @@ class Password extends Component {
   }
 }
 
-export default Password;
+const mapDispatchToProps = dispatch => {
+  return {
+    registerPassword: (password) => dispatch({type: actionTypes.REGISTER_PASSWORD, password: password})
+  }
+};
+
+export default connect(null, mapDispatchToProps)(Password);

@@ -4,6 +4,9 @@
     top: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+    box-shadow: 0 2px 3px #ccc;
+    border: 1px solid #eee;
+    padding: 30px
 }
 
 .LogIn input {

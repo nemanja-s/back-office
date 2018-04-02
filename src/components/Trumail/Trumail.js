@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import './Trumail.css';
+import * as actionTypes from '../../store/actions';
 
 class Trumail extends Component {
   state = {
@@ -28,7 +31,7 @@ class Trumail extends Component {
         .then(json => {
           if (json.deliverable) {
             this.setState({message: "OK!"});
-            this.props.getEmail(email)
+            this.props.registerEmail(email)
           } else {
             this.setState({message: "Email doesn't exist"});
           }
@@ -52,4 +55,10 @@ class Trumail extends Component {
   }
 }
 
-export default Trumail;
+const mapDispatchToProps = dispatch => {
+  return {
+    registerEmail: (email) => dispatch({type: actionTypes.REGISTER_MAIL, email: email})
+  }
+};
+
+export default connect(null, mapDispatchToProps)(Trumail);

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actionTypes from '../../store/actions';
 
 class Username extends Component {
   state = {
@@ -23,7 +25,7 @@ class Username extends Component {
       .filter(user => existingUsers[user].username === username);
     if (existingUsernames.length === 0) {
       this.setState({ message: "OK!"});
-      this.props.getUsername(username)
+      this.props.registerUsername(username)
     }  else {
       this.setState({ message: "Username already taken" })
     }
@@ -42,4 +44,10 @@ class Username extends Component {
   }
 }
 
-export default Username;
+const mapDispatchToProps = dispatch => {
+  return {
+    registerUsername: (username) => dispatch({type: actionTypes.REGISTER_USERNAME, username: username})
+  }
+};
+
+export default connect(null, mapDispatchToProps)(Username);

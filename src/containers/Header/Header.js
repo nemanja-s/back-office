@@ -1,23 +1,36 @@
 import React from 'react';
 import './Header.css';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actionTypes from '../../store/actions';
 
 const header = props => {
-  let welcome = null;
-  if (props.login) {
-    welcome =
-      <div>
-        <Link to={`${process.env.PUBLIC_URL}/users`} onClick={() => {props.logout()}}>Logout</Link>
-        <span>Hello, {props.username}</span>
-        <Link to={`${process.env.PUBLIC_URL}/users`}>USERS</Link>
-      </div>
-  }
+  console.log(props);
   return (
     <div className='Header'>
       <p>Back  Office</p>
-      {welcome}
+      {props.isAuth ?
+        <div>
+          <a onClick={() => props.loggedOut()}>Logout</a>
+          <span>Hello, {props.username}</span>
+          <Link to={`${process.env.PUBLIC_URL}/users`}>USERS</Link>
+        </div>
+        : null}
     </div>
   )
 };
 
-export default header;
+const mapStateToProps = state => {
+  return {
+    username: state.username,
+    isAuth: state.isAuthenticated
+  }
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    loggedOut: () => dispatch({type: actionTypes.IS_AUTHENTICATED, value: false})
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(header);

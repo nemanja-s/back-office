@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import './LogIn.css';
+import * as actionTypes from '../../store/actions';
 
 
 class LogIn extends Component {
@@ -29,7 +31,8 @@ class LogIn extends Component {
         this.setState({
           message: "You have successfuly loged in!",
         });
-        this.props.getInfo([existingUsers[user].username, true])
+        this.props.setUsername(existingUsers[user].username);
+        this.props.isAuthenticated();
       } else {
         this.setState({ message: "Incorect password!" })
       }
@@ -57,5 +60,12 @@ class LogIn extends Component {
   }
 }
 
-export default LogIn;
+const mapDispatchToProps = dispatch => {
+  return {
+    setUsername: (username) => dispatch({type: actionTypes.SET_USERNAME, username: username}),
+    isAuthenticated: () => dispatch({type: actionTypes.IS_AUTHENTICATED, value: true})
+  }
+};
+
+export default connect(null, mapDispatchToProps)(LogIn);
 

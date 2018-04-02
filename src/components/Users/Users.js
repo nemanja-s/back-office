@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+
 import './Users.css';
 
 class Users extends Component {
@@ -54,7 +56,7 @@ class Users extends Component {
     ));
 
     return(
-      this.props.login ?
+      this.props.isAuthenticated ?
       <div className='Main'>
         <input
           type='text'
@@ -83,4 +85,10 @@ class Users extends Component {
   }
 }
 
-export default Users;
+const mapStateToProps = state => {
+  return {
+    isAuthenticated: state.isAuthenticated
+  }
+};
+
+export default connect(mapStateToProps)(Users);
