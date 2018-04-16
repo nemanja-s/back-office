@@ -35,7 +35,6 @@ class Users extends Component {
     });
     this.name.value = '';
     this.email.value = '';
-    console.log(this.state.users)
   };
 
   deleteUser = id => {

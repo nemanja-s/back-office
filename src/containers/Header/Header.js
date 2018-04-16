@@ -13,7 +13,7 @@ const header = props => {
         <div>
           <a onClick={() => props.loggedOut()}>Logout</a>
           <span>Hello, {props.username}</span>
-          <Link to={`${process.env.PUBLIC_URL}/users`}>USERS</Link>
+          <Link to='/users'>USERS</Link>
         </div>
         : null}
     </div>
