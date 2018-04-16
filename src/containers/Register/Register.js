@@ -33,7 +33,7 @@ class Register extends Component {
             message: 'You can login now...'
           });
           setTimeout(() => {
-            this.props.history.push(`${process.env.PUBLIC_URL}/`)
+            this.props.history.push('/')
           }, 1000)
         })
         .catch(error => {console.log(error)});
@@ -51,7 +51,7 @@ class Register extends Component {
         <div className='Buttons'>
           {this.state.message}
           <button onClick={this.createAccount}>REGISTER</button>
-          <Link to={`${process.env.PUBLIC_URL}/`}>Login</Link>
+          <Link to='/'>Login</Link>
         </div>
       </div>
     )

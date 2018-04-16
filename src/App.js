@@ -13,9 +13,9 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <Route path={`${process.env.PUBLIC_URL}/`} exact component={LogIn} />
-        <Route path={`${process.env.PUBLIC_URL}/register`} component={Register} />
-        <Route path={`${process.env.PUBLIC_URL}/users`} component={Users} />
+        <Route path='/' exact component={LogIn} />
+        <Route path='/register' component={Register} />
+        <Route path='/users' component={Users} />
         <Footer />
       </div>
     )

@@ -53,7 +53,7 @@ class LogIn extends Component {
         <div className='Buttons'>
           {this.state.message}
           <button onClick={this.login}>LOGIN</button>
-          <Link to={`${process.env.PUBLIC_URL}/register`}>Create Account</Link>
+          <Link to='/register'>Create Account</Link>
         </div>
       </div>
     )

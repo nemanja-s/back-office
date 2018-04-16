@@ -80,7 +80,7 @@ class Users extends Component {
           </tbody>
         </table>
       </div> :
-      <Redirect to={`${process.env.PUBLIC_URL}/`} />
+      <Redirect to='/' />
     )
   }
 }
