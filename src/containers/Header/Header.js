@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import * as actionTypes from '../../store/actions';
 
 const header = props => {
-  console.log(props);
   return (
     <div className='Header'>
       <p>Back  Office</p>
