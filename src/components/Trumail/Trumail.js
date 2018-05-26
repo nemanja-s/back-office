@@ -29,7 +29,6 @@ class Trumail extends Component {
       fetch('https://thingproxy.freeboard.io/fetch/https://api.trumail.io/v1/json/' + email)
         .then(response => response.json())
         .then(json => {
-          console.log(json);
           if (json.deliverable) {
             this.setState({message: "OK!"});
             this.props.registerEmail(email)
