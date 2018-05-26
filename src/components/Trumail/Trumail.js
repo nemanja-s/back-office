@@ -26,7 +26,7 @@ class Trumail extends Component {
     let existingEmails = Object.keys(existingUsers)
       .filter(user => existingUsers[user].email === email);
     if (existingEmails.length === 0) {
-      fetch('https://thingproxy.freeboard.io/fetch/https://trumail.io/json/' + email)
+      fetch('https://trumail.io/json/' + email)
         .then(response => response.json())
         .then(json => {
           if (json.deliverable) {
